@@ -55,7 +55,7 @@ public class FileRepositoryTest {
 
   @Test
   @DisplayName("Тест метода FileRepository.copyTXTFiles(String from, String to)")
-  void testCopyTXTFiles() {
+  void testCopyTXTFiles() throws IOException {
     final File emptyFile = getFile(COPY_FILE);
     assertEquals("", emptyFile.getName());
     fileRepository.copyTXTFiles(SOURCE_FILE, COPY_FILE);

@@ -1,5 +1,6 @@
 package com.epam.izh.rd.online.service;
 
+
 public class SimpleTextService implements TextService {
 
     /**
@@ -13,7 +14,8 @@ public class SimpleTextService implements TextService {
      */
     @Override
     public String removeString(String base, String remove) {
-        return null; //TODO
+
+        return base.replaceAll(remove, "");
     }
 
     /**
@@ -24,7 +26,7 @@ public class SimpleTextService implements TextService {
      */
     @Override
     public boolean isQuestionString(String text) {
-        return false; //TODO
+        return text.endsWith("?");
     }
 
     /**
@@ -35,7 +37,11 @@ public class SimpleTextService implements TextService {
      */
     @Override
     public String concatenate(String... elements) {
-        return null; //TODO
+        StringBuilder builder = new StringBuilder();
+        for (String el : elements) {
+            builder.append(el);
+        }
+        return builder.toString();
     }
 
     /**
@@ -47,7 +53,20 @@ public class SimpleTextService implements TextService {
      */
     @Override
     public String toJumpCase(String text) {
-        return null; //TODO
+        StringBuilder builder = new StringBuilder();
+         String[] arr = text.split("");
+        for (int i = 0; i < arr.length; i++) {
+            if(i % 2 == 0) {
+              arr[i] = arr[i].toLowerCase();
+            } else {
+                arr[i] = arr[i].toUpperCase();
+            }
+
+        }
+        for(String el : arr) {
+            builder.append(el);
+        }
+        return builder.toString() ;
     }
 
     /**
@@ -59,6 +78,10 @@ public class SimpleTextService implements TextService {
      */
     @Override
     public boolean isPalindrome(String string) {
-       return false; //TODO
+        if(string.isEmpty()) return false;
+        StringBuilder builder = new StringBuilder(string.replaceAll(" ", ""));
+        String ret = builder.reverse().toString();
+        string = string.replaceAll(" ", "");
+       return ret.equalsIgnoreCase(string);
     }
 }
